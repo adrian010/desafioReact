@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -7,9 +7,10 @@ import Graficos from "./graficos";
 
 import EdituserForm from "./EditUserForm";
 
-//import MOCK_DATA from './MOCKDATA.json';
-import Pagination from "./Pagination";
+//import Pagination from "./Pagination";
 import axios from "axios";
+
+const Pagination = lazy(()=>import('./UsersTable'));
 
 function MainPage() {
   const [datos, setDatos] = useState([]);
@@ -91,12 +92,14 @@ function MainPage() {
 
   return (
     <>
+    <Suspense fallback={<h1>Cargando...</h1>}>
       <Pagination
         usuarios={usuarios}
         eliminarUsuario={eliminarUsuario}
         editarUsuario={editarUsuario}
         accesos={accesos}
       />
+    </Suspense>
 
       <Modal
         show={show}

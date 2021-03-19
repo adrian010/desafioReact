@@ -3,7 +3,7 @@ import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { COLUMNS } from "./columns2";
 import { useMemo } from "react";
 
-const Pagination = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
+const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
   const columns = useMemo(() => COLUMNS, []);
   //const data = useMemo(()=> usuarios, [])
   const data = usuarios;
@@ -134,4 +134,4 @@ const Pagination = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
   );
 };
 
-export default Pagination;
+export default UsersTable;

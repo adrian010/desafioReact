@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import Login from "./componentes/Login";
+import Login from "./components/Login";
 import fire from "./firebase";
 
-import MainPage from "./componentes/MainPage";
+import MainPage from "./components/MainPage";
 
 function App() {
   const [user, setUser] = useState("");
