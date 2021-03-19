@@ -54,7 +54,7 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
                     {" "}
                     {column.render("Header")}
                     <span>
-                      {column.isSorted ? (column.isSortedDesc ? "" : " ") : ""}
+                      {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : ''}
                     </span>
                     <div>
                       {column.canFilter ? column.render("Filter") : null}
