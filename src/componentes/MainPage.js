@@ -1,8 +1,6 @@
 
 
-import {useState} from 'react';
-
-
+import {useState, useEffect} from 'react';
 
 
 import Modal from 'react-bootstrap/Modal'
@@ -12,9 +10,9 @@ import Graficos from './graficos';
 
 import EdituserForm from './EditUserForm';
 
-import MOCK_DATA from './MOCKDATA.json';
+//import MOCK_DATA from './MOCKDATA.json';
 import Pagination from './Pagination';
-
+import axios from "axios";
 
 
 
@@ -36,13 +34,22 @@ function MainPage() {
   const handleShow = () => setShow(true);
 
 
-  const [usuarios, setUsuarios] = useState(MOCK_DATA)
+  const [usuarios, setUsuarios] = useState([])
 
   const [usuarioActual, setUsuarioActual] = useState({
     
     id:'', nombre: '', apellido:'',dni:'',email:'',fechaAlta:'',direccion:'',datos:'',
   }
     );
+
+    const fetchUser = async () =>{
+      const {data} = await axios("MOCKDATA.json")
+      setUsuarios(data)
+    }
+
+    useEffect(()=>{
+      fetchUser()
+    },[])
 
 
     const editarUsuario = (usuario) =>{
