@@ -1,24 +1,29 @@
-.App{
-   
-        height: 100vh;
-        width: 100%;
-        background: #E0EAFC;  
-        background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC);
-        background: linear-gradient(to top, #CFDEF3, #E0EAFC); 
-        
-        /* background-color: #327D97; */
+.App {
+  height: 100vh;
+  width: 100%;
+  background: #e0eafc;
+  background: -webkit-linear-gradient(to top, #cfdef3, #e0eafc);
+  background: linear-gradient(to top, #cfdef3, #e0eafc);
 
+  /* background-color: #327D97; */
 }
 
-.bl{
-    /* background-color: #2193b0; */
-    
-    /* background-color: #327D97; */
+.bl {
+  /* background-color: #2193b0; */
 
-    background: #6190E8;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #A7BFE8, #6190E8);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #A7BFE8, #6190E8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+  /* background-color: #327D97; */
 
-    /* position: absolute; */
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* position: absolute; */
 }
