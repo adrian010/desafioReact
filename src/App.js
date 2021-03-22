@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import Login from "./components/Login";
 import fire from "./firebase";
-
+import './styles/table.css';
 import MainPage from "./components/MainPage";
 
 function App() {

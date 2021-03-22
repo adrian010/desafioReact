@@ -3,6 +3,10 @@ import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { COLUMNS } from "./columns2";
 import { useMemo } from "react";
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
+
+
 const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
   const columns = useMemo(() => COLUMNS, []);
   //const data = useMemo(()=> usuarios, [])
@@ -34,13 +38,12 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
   const { pageIndex } = state;
 
   return (
-    <>
-      <hr />
+    
+      <div className="cat">
       <h2 className="mt-3 text-center">Usuarios</h2>
 
-      <div className="table-responsive">
         <table
-          className="table table-bordered table-striped table-sm mt-5"
+          className="table table-bordered table-striped table-sm mt-5 mb-1"
           {...getTableProps()}
         >
           <thead className="thead-dark">
@@ -48,20 +51,21 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th
-                    className="pb-2"
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    className="pb-2 text-center"                    
                   >
-                    {" "}
-                    {column.render("Header")}
+                    {/* {" "} */}
+                    <span className="atributos" {...column.getHeaderProps(column.getSortByToggleProps())}>
+                        {column.render("Header") } 
+                    </span>
                     <span>
                       {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : ''}
                     </span>
-                    <div>
+                    
                       {column.canFilter ? column.render("Filter") : null}
-                    </div>
+                    
                   </th>
                 ))}
-                <th className="text-center align-middle">Acciones</th>
+                <th className="text-center align-middle px-3"><h4>Acciones</h4></th>
               </tr>
             ))}
           </thead>
@@ -75,31 +79,33 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
                       <td {...cell.getCellProps()}>{cell.render("Cell")} </td>
                     );
                   })}
-                  <td>
-                    <button
-                      className="btn-sm btn btn-primary mr-1"
-                      onClick={() => {
-                        accesos(row.original.datos);
-                      }}
-                    >
-                      Accesos
-                    </button>
-                    <button
-                      className="btn-sm btn btn-primary mr-1 mt-1"
-                      onClick={() => {
+                  <td className="text-center align-middle">
+
+                      <OverlayTrigger overlay={<Tooltip >Editar Usuario </Tooltip>}>                              
+                          <span className="d-inline-block material-icons icono mr-2" onClick={() => {
                         editarUsuario(row.original);
-                      }}
-                    >
-                      editar
-                    </button>
-                    <button
-                      className="btn-sm btn btn-danger mt-1"
-                      onClick={() => {
+                      }}>
+                          mode_edit
+                          </span>                                
+                      </OverlayTrigger>
+
+                      <OverlayTrigger overlay={<Tooltip >Eliminar Usuario </Tooltip>}>                              
+                          <span className="d-inline-block material-icons icono mr-2" onClick={() => {
                         eliminarUsuario(row.original.id);
-                      }}
-                    >
-                      eliminar
-                    </button>
+                      }}>
+                          delete_forever
+                          </span>                                
+                      </OverlayTrigger>
+
+                      <OverlayTrigger overlay={<Tooltip >Accesos </Tooltip>}>                              
+                          <span className="d-inline-block material-icons icono" onClick={() => {
+                        accesos(row.original.datos);
+                      }}>
+                          leaderboard
+                          </span>                                
+                      </OverlayTrigger>
+
+                
                   </td>
                 </tr>
               );
@@ -107,13 +113,8 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
           </tbody>
         </table>
 
-        <div className=" justify-content-center text-center">
-          <span className="mr-2">
-            Page{""}
-            <strong>
-              {pageIndex + 1} of {pageOptions.length}
-            </strong>
-          </span>
+        <div className=" justify-content-center text-center bg-light my-3">
+         
           <button
             className="btn btn-primary mr-1"
             onClick={() => previousPage()}
@@ -121,6 +122,12 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
           >
             Anterior
           </button>
+          <span className="mx-2">
+            Page{""}
+            <strong>
+              {pageIndex + 1} of {pageOptions.length}
+            </strong>
+          </span>
           <button
             className="btn btn-primary mr-1"
             onClick={() => nextPage()}
@@ -129,8 +136,8 @@ const UsersTable = ({ usuarios, eliminarUsuario, editarUsuario, accesos }) => {
             Siguiente
           </button>
         </div>
-      </div>
-    </>
+      
+    </div>
   );
 };
 

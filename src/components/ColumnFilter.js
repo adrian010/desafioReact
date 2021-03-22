@@ -1,12 +1,14 @@
 export const ColumnFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
 
-  return (
-    <div>
-      <input
-        value={filterValue || ""}
-        onChange={(e) => setFilter(e.target.value)}
-      />
-    </div>
+  return(
+      <>
+        <input
+                className="inputTable"
+                placeholder={"Buscar por "+column.Header}
+                value={filterValue||''}
+                onChange={(e)=> setFilter(e.target.value)}
+            />
+      </>
   );
 };

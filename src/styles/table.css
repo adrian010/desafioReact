@@ -1,0 +1,29 @@
+
+.cat{
+    /* background-color: tomato; */
+    width: 95%;
+    margin: auto;
+    border: black;
+    border-style:solid;
+    border-width: 2px;
+}
+
+.texto{
+    font-size: 1.1vw;
+}
+
+.inputTable{
+    
+    margin: auto;
+    width: 100%;
+    
+}
+
+.icono:hover{
+    cursor: pointer;
+    color: #3F9B80;
+}
+
+.atributos:hover{
+    color: #3F9B80;
+}
